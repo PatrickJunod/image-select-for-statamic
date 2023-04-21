@@ -1,0 +1,27 @@
+{
+    "name": "patrickjunod/image-select",
+    "autoload": {
+        "psr-4": {
+            "Patrickjunod\\ImageSelect\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Patrick Junod"
+        }
+    ],
+    "support": {
+        "email": "contact@patrickjunod.dev"
+    },
+    "extra": {
+        "statamic": {
+            "name": "Image Select",
+            "description": "Image Select Fieldtype addon"
+        },
+        "laravel": {
+            "providers": [
+                "Patrickjunod\\ImageSelect\\ServiceProvider"
+            ]
+        }
+    }
+}
