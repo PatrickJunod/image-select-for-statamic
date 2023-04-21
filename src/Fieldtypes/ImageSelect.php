@@ -41,12 +41,12 @@ class ImageSelect extends Fieldtype
                                 'required'
                             ],
                             'restrict' => false,
-                            'allow_uploads' => config('statamic.image_select.allow_uploads'),
+                            'allow_uploads' => config('statamic.image_select.allow_uploads',  true),
                             'show_filename' => false,
                             'display' => 'Image',
                             'type' => 'assets',
                             'width' => 33,
-                            'container' => config('statamic.image_select.container')
+                            'container' => config('statamic.image_select.container', 'assets')
                         ],
                     ],
                     [

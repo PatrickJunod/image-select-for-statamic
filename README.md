@@ -29,9 +29,14 @@ composer require patrickjunod/image-select
 
 ## How to Use
 
-Publish the config file if not already the case
+Publish the assets files if not already the case
 ``` bash
-php artisan vendor:publish --tag=image-select --force
+php artisan vendor:publish --tag=image-select
+```
+
+You can also publish the config file
+``` bash
+php artisan vendor:publish --tag=image-select-config
 ```
 
 You will then find the image_select.php config file in your `config > statamic` folder.
