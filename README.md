@@ -10,13 +10,14 @@ Whether you're building a template selection page or an e-commerce site where us
 ## Features
 
 - Create your own image selection field
+- Allow for multiple selection of images or only one
+- Mark your image field as required or nullable like any normal field
 - It saves the selection as a value defined in your field
 
 ## Coming soon
 
-- Multi-select
 - Disabling options
-- Deselect
+- Icons support
 - And many more !
 
 ## How to Install
