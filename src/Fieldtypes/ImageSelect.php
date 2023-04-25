@@ -25,6 +25,13 @@ class ImageSelect extends Fieldtype
                 'type' => 'text',
                 'width' => 50,
             ],
+            'multiple' => [
+                'display' => __('Multiple'),
+                'instructions' => __('Allow multi-select'),
+                'type' => 'toggle',
+                'default' => false,
+                'width' => 50,
+            ],
             'options' => [
                 'display' => __('Options'),
                 'instructions' => __('statamic::fieldtypes.select.config.options'),
