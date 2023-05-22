@@ -41,20 +41,42 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [Fieldtype],
+  data: function data() {
+    return {
+      values: (this.config.multiple && !Array.isArray(this.value) ? [this.value] : this.value) || (this.config.multiple ? [] : '')
+    };
+  },
   computed: {
     options: function options() {
       return this.meta.options;
     },
     replicatorPreview: function replicatorPreview() {
-      var option = _.findWhere(this.config.options, {
-        value: this.value
-      });
-      return option ? option.label : this.value;
+      var _this = this;
+      return Array.isArray(this.values) ? this.values.map(function (value) {
+        var option = _.findWhere(_this.options, {
+          value: value
+        });
+        return option ? option.label : value;
+      }).join(', ') : this.values;
     }
   },
   methods: {
     focus: function focus() {
       this.$refs.images[0].focus();
+    },
+    exists: function exists(value) {
+      if (this.config.multiple && Array.isArray(this.values)) {
+        return this.values.includes(value);
+      }
+      return this.values === value;
+    }
+  },
+  watch: {
+    values: function values(_values, oldValues) {
+      this.update(_values);
+    },
+    value: function value(_value, oldValue) {
+      this.values = _value;
     }
   }
 });
@@ -174,7 +196,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "fieldset",
-    { staticClass: "flex items-center space-x-2" },
+    { staticClass: "flex items-center space-x-2 select-none" },
     _vm._l(_vm.options, function (option, index) {
       return _c(
         "label",
@@ -182,40 +204,65 @@ var render = function () {
           key: _vm.$index,
           staticClass:
             "relative rounded border-2 transition-all flex flex-col cursor-pointer items-center justify-center px-1 py-0.5 focus:outline-none ring-blue-500",
-          class: {
-            "ring-offset-1 border-blue-500 scale-[102%]":
-              _vm.value === option.image_value,
-            "scale-[100%] border-opacity-10": _vm.value !== option.image_value,
-          },
+          class: _vm.exists(option.image_value)
+            ? "ring-offset-1 border-blue-500 scale-[102%]"
+            : "scale-[100%] border-opacity-10",
         },
         [
           _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.values,
+                expression: "values",
+              },
+            ],
             ref: "images",
             refInFor: true,
             staticClass: "sr-only",
             attrs: {
-              type: "radio",
-              name: _vm.name,
+              type: "checkbox",
+              "true-value": option.image_value,
+              "false-value": null,
               disabled: _vm.isReadOnly,
               "aria-labelledby": _vm.name + "-" + index + "-label",
             },
             domProps: {
               value: option.image_value,
-              checked: _vm.value === option.image_value,
+              checked: Array.isArray(_vm.values)
+                ? _vm._i(_vm.values, option.image_value) > -1
+                : _vm._q(_vm.values, option.image_value),
             },
             on: {
-              input: function ($event) {
-                return _vm.update($event.target.value)
+              change: function ($event) {
+                var $$a = _vm.values,
+                  $$el = $event.target,
+                  $$c = $$el.checked ? option.image_value : null
+                if (Array.isArray($$a)) {
+                  var $$v = option.image_value,
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 && (_vm.values = $$a.concat([$$v]))
+                  } else {
+                    $$i > -1 &&
+                      (_vm.values = $$a
+                        .slice(0, $$i)
+                        .concat($$a.slice($$i + 1)))
+                  }
+                } else {
+                  _vm.values = $$c
+                }
               },
             },
           }),
           _vm._v(" "),
-          _vm.value === option.image_value
+          _vm.exists(option.image_value)
             ? _c(
                 "span",
                 {
                   staticClass:
-                    "absolute backdrop-blur flex items-center justify-center h-12 w-12 border border-gray-200 bg-white/60 text-gray-500 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
+                    "absolute backdrop-blur flex items-center justify-center h-8 w-8 border-2 border-blue-500 bg-blue-500/70 text-blue-50 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
                 },
                 [
                   _c(
