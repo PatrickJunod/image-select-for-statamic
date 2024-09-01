@@ -4,6 +4,7 @@ namespace Patrickjunod\ImageSelect\Fieldtypes;
 
 use Statamic\Fields\Fieldtype;
 use Statamic\Facades\Asset;
+use Statamic\Exceptions\AssetNotFoundException;
 
 class ImageSelect extends Fieldtype
 {
@@ -95,10 +96,21 @@ class ImageSelect extends Fieldtype
     public function preload() {
 
         $options = $this->config('options');
+        $container = config('statamic.image_select.container', 'assets');
 
         foreach($options as $key => $option) {
-            $options[$key]['image_src'] = Asset::query()->where('container', config('statamic.image_select.container'))
-                ->where('path', $option['image'])->first()?->url();
+
+            $asset = Asset::query()
+                ->where('container', $container)
+                ->where('path', $option['image'])
+                ->first();
+
+            if(! $asset) {
+                throw new AssetNotFoundException($option['image']);
+            }
+
+            $options[$key]['image_src'] = $asset->url();
+
         }
 
         return [
