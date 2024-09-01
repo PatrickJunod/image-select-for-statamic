@@ -1,0 +1,13 @@
+{
+  "resources/css/image-select.css": {
+    "file": "assets/image-select-BVhSFz7a.css",
+    "src": "resources/css/image-select.css",
+    "isEntry": true
+  },
+  "resources/js/image-select.js": {
+    "file": "assets/image-select-BLoed_Ew.js",
+    "name": "image-select",
+    "src": "resources/js/image-select.js",
+    "isEntry": true
+  }
+}
