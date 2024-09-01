@@ -7,17 +7,16 @@ use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
 {
+    protected $vite = [
+        'input' => [
+            'resources/js/image-select.js',
+            'resources/css/image-select.css',
+        ],
+        'publicDirectory' => 'dist',
+    ];
 
     protected $fieldtypes = [
         ImageSelectFieldType::class,
-    ];
-
-    protected $scripts = [
-        __DIR__.'/../dist/js/image-select.js'
-    ];
-
-    protected $stylesheets = [
-        __DIR__.'/../dist/css/image-select.css'
     ];
     
     protected function bootConfig()
