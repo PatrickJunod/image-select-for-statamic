@@ -6,6 +6,9 @@ With this addon, you can easily add a new fieldtype to your Statamic site that a
 
 Whether you're building a template selection page or an e-commerce site where users can select products, this addon makes it easy to incorporate images into your control panel. With its user-friendly interface and powerful functionality, the "Image Select FieldType" addon is an essential tool for any Statamic developer looking to streamline their image selection process and enhance the user experience for their site visitors.
 
+## Statamic Versions
+
+Starting with v.2.0.0, this addon is compatible with Statamic 6 only.
 
 ## Features
 

@@ -1,6 +1,6 @@
 {
   "resources/css/image-select.css": {
-    "file": "assets/image-select-B8p8QM6Y.css",
+    "file": "assets/image-select-DQ9H9J-M.css",
     "src": "resources/css/image-select.css",
     "isEntry": true,
     "name": "image-select",
@@ -9,7 +9,7 @@
     ]
   },
   "resources/js/image-select.js": {
-    "file": "assets/image-select-DhLi5dC-.js",
+    "file": "assets/image-select-Dz-2XUFj.js",
     "name": "image-select",
     "src": "resources/js/image-select.js",
     "isEntry": true
