@@ -23,5 +23,14 @@
                 "Patrickjunod\\ImageSelect\\ServiceProvider"
             ]
         }
+    },
+    "require": {
+        "php": "^8.2",
+        "statamic/cms": "^6.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
+        }
     }
 }

@@ -1,11 +1,15 @@
 {
   "resources/css/image-select.css": {
-    "file": "assets/image-select-BVhSFz7a.css",
+    "file": "assets/image-select-B8p8QM6Y.css",
     "src": "resources/css/image-select.css",
-    "isEntry": true
+    "isEntry": true,
+    "name": "image-select",
+    "names": [
+      "image-select.css"
+    ]
   },
   "resources/js/image-select.js": {
-    "file": "assets/image-select-BLoed_Ew.js",
+    "file": "assets/image-select-DhLi5dC-.js",
     "name": "image-select",
     "src": "resources/js/image-select.js",
     "isEntry": true

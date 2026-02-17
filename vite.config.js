@@ -1,9 +1,10 @@
-import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue2';
+import statamic from '@statamic/cms/vite-plugin';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [
+        statamic(),
         laravel({
             input: [
                 'resources/js/image-select.js',
@@ -11,6 +12,5 @@ export default defineConfig({
             ],
             publicDirectory: 'dist',
         }),
-        vue(),
     ],
 });
